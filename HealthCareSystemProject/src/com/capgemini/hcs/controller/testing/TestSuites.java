@@ -1,6 +1,7 @@
 package com.capgemini.hcs.controller.testing;
 import java.util.List;
 
+
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -8,6 +9,7 @@ import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import com.capgemini.hcs.dao.TestDao;
 import com.capgemini.hcs.dao.testing.DAOTestCases;
 import com.capgemini.hcs.service.testing.ServiceTestCases;
 
@@ -17,7 +19,8 @@ import com.capgemini.hcs.service.testing.ServiceTestCases;
 @SuiteClasses({
 	ControllerTestCases.class,
 	DAOTestCases.class,
-	ServiceTestCases.class
+	ServiceTestCases.class,
+	TestDao.class
 })
 public class TestSuites {
 

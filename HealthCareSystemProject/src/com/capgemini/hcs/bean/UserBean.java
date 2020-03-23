@@ -1,6 +1,6 @@
 package com.capgemini.hcs.bean;
 
-public class User {
+public class UserBean {
 		private String username;
 	
 		public String getUserName() {
@@ -9,7 +9,7 @@ public class User {
 		public void setUserName(String username) {
 			this.username = username;
 		}
-		public User(String username){
+		public UserBean(String username){
 		this.username=username;
 		
 	}

@@ -1,32 +1,33 @@
 package com.capgemini.hcs.service.testing;
 
 import org.junit.After;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ServiceTestCases {
 
-	ServiceTesting st;
+	ServiceTesting serviceTesting;
 	   @Before
 		public  void setUp() {
-			st = new ServiceTesting();
+		   serviceTesting = new ServiceTesting();
 		}
 	   
 	   @Test
-		public void validCenterIdTesting() {
-			Assert.assertEquals(true,st.validateCenterId("5"));
+		public void testValidCenterId() {
+			Assert.assertEquals(true,serviceTesting.validateCenterId("5"));
 			
 		}
 		@Test
-		public void validTestIdTesting() {
-			Assert.assertEquals(true,st.validateTestId("1","3"));
+		public void testValidTestId() {
+			Assert.assertEquals(true,serviceTesting.validateTestId("1","3"));
 			
 		}
 		
 		@After
 		public void cleanUp() {
-			st = null;
+			serviceTesting = null;
 		}
 
 }

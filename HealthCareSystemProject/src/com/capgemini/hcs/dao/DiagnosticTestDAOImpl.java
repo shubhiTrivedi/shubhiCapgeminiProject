@@ -1,44 +1,38 @@
 package com.capgemini.hcs.dao;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import com.capgemini.hcs.bean.DiagnosticCenter;
+import com.capgemini.hcs.bean.DiagnosticCenterBean;
 import com.capgemini.hcs.bean.TestBean;
 import com.capgemini.hcs.exception.EmptyTestListException;
 import com.capgemini.hcs.exception.InvalidCenterIdException;
 import com.capgemini.hcs.exception.InvalidTestIdException;
 import com.capgemini.hcs.exception.TestNameException;
 import com.capgemini.hcs.repository.CentersRepository;
-public class DiagnosticTestDAOImpl implements IDiagnosticTestDAO {
-	
-		public static ArrayList<DiagnosticCenter> centers=new ArrayList<DiagnosticCenter>(); ;
-		
 
+
+public class DiagnosticTestDAOImpl implements IDiagnosticTestDAO {
+	private static ArrayList<DiagnosticCenterBean> centers=new ArrayList<DiagnosticCenterBean>(); 
+		public static ArrayList<DiagnosticCenterBean> getCenters() {
+			return centers;
+		}
+
+		public void setCenters(ArrayList<DiagnosticCenterBean> centers) {
+			DiagnosticTestDAOImpl.centers = centers;
+		}
+		
 		CentersRepository cr=new CentersRepository();
 		//Method for adding the test at a particular center
 		
 		@Override
-	    public String addTest(){
+	    public String addTest(String id){
 	    	 String s1="";
 	        try {
-	            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-	            System.out.println("The Centers Are:");
-	            
-	            for(DiagnosticCenter a:centers){
-	                System.out.print("Center ID-"+a.getCenterId()+"\t");
-	                System.out.println("Center Name-"+a.getCenterName());
-	                System.out.println("The Test for the above Center are");
-	                for(TestBean test:a.listOfTests){
-	                    System.out.print("Test Id-"+test.testId+"\t");
-	                    System.out.println("Test Name-"+test.getTestName());
-	                    
-	                     }
-	                System.out.println("\n");
-	            }
-	            System.out.println("Enter The Center ID to add Test");
-	            String id=br.readLine();
-	            int found=0;
-	            for(DiagnosticCenter a:centers){
+	           BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	          
+	           int found=0;
+	            for(DiagnosticCenterBean a:getCenters()){
 	                if (a.getCenterId().equals(id)){
 	                    System.out.println("Enter The Test Name");
 	                    String test=br.readLine();
@@ -69,36 +63,20 @@ public class DiagnosticTestDAOImpl implements IDiagnosticTestDAO {
 	    
 	    //Method for removing a test from a particular center
 		@Override
-	    public boolean removeTest(){
+	    public boolean removeTest(String cId,String tId){
 	    	boolean res=false;
 	        try {
-	            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-	            System.out.println("The Centers Are:");
-	            for(DiagnosticCenter a: centers){
-	                System.out.print("Center ID-"+a.getCenterId()+"\t");
-	                System.out.println("Center Name-"+a.getCenterName());
-	                System.out.println("The Test for the above Center are");
-	                for(TestBean test:a.listOfTests){
-	                    System.out.print("Test Id-"+test.testId+"\t");
-	                    System.out.println("Test Name-"+test.getTestName());            
-	                 }
-	                System.out.println("\n");
-	            }
-	            System.out.println("Enter The Center ID and Test ID to Remove Test");
-	            String cId=br.readLine();
-	            String tID=br.readLine();
 	            int foundT=0,foundC=0,tempt=0;
-	            for(DiagnosticCenter a:centers){
+	            for(DiagnosticCenterBean a:getCenters()){
 	                if (a.getCenterId().equals(cId)){
 	                    foundC=1;
 	                    if(a.listOfTests.size()==0){
-	                       
-	                        throw new EmptyTestListException();
+	                       throw new EmptyTestListException();
 	                       
 	                    }
 	                    else{
 	                    	for(TestBean test:a.listOfTests){
-	                    		if (test.testId.equals(tID)){
+	                    		if (test.testId.equals(tId)){
 	                    			a.listOfTests.remove(test);
 	                    			foundT=1;
 	                    			System.out.println("Test Removed Succesfully");
@@ -128,5 +106,6 @@ public class DiagnosticTestDAOImpl implements IDiagnosticTestDAO {
 	        }
 	        return res;
 	    }
+
 		
 }

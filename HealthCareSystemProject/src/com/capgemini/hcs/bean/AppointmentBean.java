@@ -2,8 +2,8 @@ package com.capgemini.hcs.bean;
 
 import java.time.LocalDateTime;
 
-public class Appointment {
-	User user;
+public class AppointmentBean {
+	UserBean user;
 	private int appId;
 	private TestBean test;
 	LocalDateTime dateTime;
@@ -18,10 +18,10 @@ public class Appointment {
 	public boolean isApproved() {
 		return approved;
 	}
-	public User getUser() {
+	public UserBean getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(UserBean user) {
 		this.user = user;
 	}
 	public LocalDateTime getDate() {
@@ -43,7 +43,7 @@ public class Appointment {
 		this.appId = appId;
 	}
 	
-	public Appointment(User user, int appId,TestBean test, LocalDateTime dateTime,boolean approved ){
+	public AppointmentBean(UserBean user, int appId,TestBean test, LocalDateTime dateTime,boolean approved ){
 		this.user=user;
 		this.test=test;
 		this.approved=approved;

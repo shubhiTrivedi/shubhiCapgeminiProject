@@ -7,59 +7,59 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DAOTestCases {
-	   DAOTesting dt;
+	   DAOTesting daoTesting;
 	   @Before
 		public  void setUp() {
-			dt = new DAOTesting();
+		   daoTesting = new DAOTesting();
 		}
 
 	
 	//Testing methods
-	@Test
-	public void initialCapitalTestName() {
-		Assert.assertEquals(true,dt.validTestName("CTScan"));
+	@Test()
+	public void testInitialCapitalTestName() {
+		Assert.assertEquals(true,daoTesting.validTestName("CTScan"));
 		
 	}
 	
 	@Test
-	public void testNameLength() {
-		Assert.assertEquals(true,dt.validTestLength("Blood Sugar"));
+	public void testTheTestNameLength() {
+		Assert.assertEquals(true,daoTesting.validTestLength("Blood Sugar"));
 		
 	}
 	@Test
-	public void startWithCharTestName() {
-		Assert.assertEquals(true,dt.validTestName1("ctscan"));
+	public void testStartWithCharTestName() {
+		Assert.assertEquals(true,daoTesting.validTestName1("ctscan"));
 	}
 	
 	@Test
-	public void validCenterIdTest() {
-		Assert.assertEquals(true,dt.validCenterId("3"));
+	public void testValidCenterIdTest() {
+		Assert.assertEquals(true,daoTesting.validCenterId("3"));
 		
 	}
 	@Test
-	public void validTestIdTest() {
-		Assert.assertEquals(true,dt.validTestId("1","2"));
+	public void testValidTestIdTest() {
+		Assert.assertEquals(true,daoTesting.validTestId("1","2"));
 		
 	}
 	@Test
-	public void validTestIdTestInteger() {
-		Assert.assertEquals(false,dt.validTestId("1","ch"));
+	public void testValidTestIdInteger() {
+		Assert.assertEquals(false,daoTesting.validTestId("1","ch"));
 		
 	}
 	@Test
-	public void validTestIdTestIntegerNegative() {
-		Assert.assertEquals(false,dt.validTestId("1","-2"));
+	public void testValidTestIdIntegerNegative() {
+		Assert.assertEquals(false,daoTesting.validTestId("1","-2"));
 		
 	}
 	@Test
-	public void validTestIdTestIntegerEmpty() {
-		Assert.assertEquals(false,dt.validTestId("1",""));
+	public void testValidTestIdEmpty() {
+		Assert.assertEquals(false,daoTesting.validTestId("1",""));
 		
 	}
 	
 	@After
 	public void cleanUp() {
-		dt = null;
+		daoTesting = null;
 	}
 
 }

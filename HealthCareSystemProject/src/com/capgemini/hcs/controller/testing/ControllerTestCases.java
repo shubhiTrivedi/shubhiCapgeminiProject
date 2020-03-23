@@ -7,28 +7,25 @@ import org.junit.Test;
 public class ControllerTestCases {
 
 	
-		   ControllerTesting ct;
+		   ControllerTesting controllerTesting;
 		   @Before
 			public  void setUp() {
-				ct = new ControllerTesting();
+			   controllerTesting = new ControllerTesting();
 			}
 		   
 		   @Test
-			public void validateChoice() {
-			   Assert.assertEquals(true,ct.validChoice(1));
+			public void testValidChoice() {
+			   Assert.assertEquals(true,controllerTesting.validChoice(1));
 				
 			}
 		   @Test
-			public void validateChoice1() {
-			   Assert.assertEquals(true,ct.validChoice1(4));
+			public void testValidSubChoice() {
+			   Assert.assertEquals(true,controllerTesting.validChoice1(4));
 				
 			}
-		   
-		  
-		   
 		   @After
 			public void cleanUp() {
-				ct = null;
+			   controllerTesting = null;
 			}
 
 

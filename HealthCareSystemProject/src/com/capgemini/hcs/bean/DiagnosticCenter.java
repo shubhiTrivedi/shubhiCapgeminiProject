@@ -1,44 +1,30 @@
 package com.capgemini.hcs.bean;
-import java.util.ArrayList;
+import java.io.BufferedReader;
 
+import java.io.InputStreamReader;
+
+import com.capgemini.hcs.dao.DiagnosticTestDAOImpl;
+import com.capgemini.hcs.service.DiagnosticTestServiceImpl;
 
 public class DiagnosticCenter {
+	 static DiagnosticTestServiceImpl h1=new DiagnosticTestServiceImpl();
 	
-	    static int cstart=1; 
-	    private String centerId;
-	    private String centerName;
-	    
-	    public String getCenterId() {
-			return centerId;
-		}
-	    
-		public String getCenterName() {
-			return centerName;
-		}
-
-		public void setCenterName(String centerName) {
-			this.centerName = centerName;
-		}
-
-		public  ArrayList<TestBean> listOfTests=new ArrayList<>(); //for storing the list of tests
-		//public ArrayList<Appointment> appointmentList=new ArrayList<>();//for displaying appointment list
-	    
-	    
-	    public DiagnosticCenter(String centerName)
-	    {
-	       listOfTests.add(new TestBean("Blood Group"));
-	       listOfTests.add(new TestBean("Blood Sugar"));
-	       listOfTests.add(new TestBean("Blood Pressure"));
-	        
-	       //appointmentList.add(new Appointment(new User("User A"),1,new TestBean("Test Id 0"),LocalDateTime.of(2020,03,12,10,00,00),true));
-	       //appointmentList.add(new Appointment(new User("User B"),2,new TestBean("Test Id 2"),LocalDateTime.of(2020,04,23,10,30,00),true));
-	        
-	        this.centerName=centerName;
-	        this.centerId=Integer.toString(cstart++);
-	        
-	    }
-
-		
-	}
-
-
+	
+	public static void addCenter(){
+        try {
+            BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter The Center Name to be Added");
+            String cName=br.readLine();
+            
+            if (cName.length()!=0){
+                DiagnosticTestDAOImpl.getCenters().add(new DiagnosticCenterBean(cName));
+                System.out.println("Center Added Succesfully");
+            }
+            else{
+                System.out.println("Name Shouldn't be Blank");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}

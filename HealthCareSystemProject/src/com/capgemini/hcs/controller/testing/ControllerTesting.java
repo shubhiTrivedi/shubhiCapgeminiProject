@@ -1,7 +1,11 @@
 package com.capgemini.hcs.controller.testing;
 
 public class ControllerTesting {
+	
+	
+	
 	public boolean validChoice(int v) {
+		
     	boolean flag=false;
     	if(v==1 ||v==2) {
     		flag=true;

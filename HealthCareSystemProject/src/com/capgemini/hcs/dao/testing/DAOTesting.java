@@ -1,13 +1,13 @@
 package com.capgemini.hcs.dao.testing;
 
-import com.capgemini.hcs.bean.DiagnosticCenter;
+import com.capgemini.hcs.bean.DiagnosticCenterBean;
 
 import com.capgemini.hcs.bean.TestBean;
 import com.capgemini.hcs.dao.DiagnosticTestDAOImpl;
 
 public class DAOTesting {
 	
-	DiagnosticTestDAOImpl dao=new DiagnosticTestDAOImpl();
+	DiagnosticTestDAOImpl diagnosticTestDAOImpl=new DiagnosticTestDAOImpl();
 	//Testing Method1
     public boolean validTestName(String testName) {
     	boolean flag=false;
@@ -37,7 +37,7 @@ public class DAOTesting {
     }
     public boolean validCenterId(String cid) {
     	boolean f=false;
-    	for(DiagnosticCenter a:dao.centers){
+    	for(DiagnosticCenterBean a:diagnosticTestDAOImpl.getCenters()){
     		if (a.getCenterId().equals(cid)){
     			f=true;
     			
@@ -49,7 +49,7 @@ public class DAOTesting {
     
     public boolean validTestId(String cid,String tId) {
     	boolean f=false;
-    	for(DiagnosticCenter a:dao.centers){
+    	for(DiagnosticCenterBean a:diagnosticTestDAOImpl.getCenters()){
     		if (a.getCenterId().equals(cid)){
     			for(TestBean test:a.listOfTests){
     				if (test.testId.equals(tId)){
